@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "shut_up_realms",
+  "version": "${version}",
+  "name": "shut up realms",
+  "description": "removes the realms notification dot and news icon!",
+  "authors": [
+    "ix0rai",
+    "orifu"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/shut-up-realms",
+    "sources": "https://github.com/rosebudmods/shut-up-realms",
+    "issues": "https://github.com/rosebudmods/shut-up-realms/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/shut_up_realms/icon.png",
+  "environment": "client",
+  "mixins": [
+    {
+      "config": "shut_up_realms.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "${minecraft_version}"
+  },
+
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/TN9gaXJ6E8",
+        "modmenu.issues": "https://github.com/rosebudmods/shut-up-realms/issues",
+        "modmenu.website": "https://modrinth.com/mod/shut-up-realms"
+      }
+    }
+  }
+}
