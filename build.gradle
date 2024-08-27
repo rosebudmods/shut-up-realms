@@ -1,6 +1,7 @@
 plugins {
     id 'fabric-loom' version '1.7-SNAPSHOT'
     id 'maven-publish'
+    id "me.modmuss50.mod-publish-plugin" version "0.5.2"
 }
 
 version = project.mod_version
@@ -34,14 +35,44 @@ dependencies {
 
 processResources {
     inputs.property "version", project.version
-    inputs.property "minecraft_version", project.minecraft_version
     inputs.property "loader_version", project.loader_version
     filteringCharset "UTF-8"
 
     filesMatching("fabric.mod.json") {
         expand "version": project.version,
-                "minecraft_version": project.minecraft_version,
                 "loader_version": project.loader_version
+    }
+}
+
+publishMods {
+    displayName = "shut up realms ${project.version}"
+    file = remapJar.archiveFile
+    changelog = rootProject.file("CHANGELOG.md").getText()
+    type = STABLE
+
+    modLoaders.add("quilt")
+    modLoaders.add("fabric")
+
+    dryRun = !providers.environmentVariable("MODRINTH_TOKEN").isPresent()
+            || !providers.environmentVariable("CURSEFORGE_TOKEN").isPresent()
+            || property("pub.should_publish") == "false"
+
+    var mcVersions = [project.minecraft_version]
+    mcVersions.addAll(property("pub.additional_versions").toString().split(" ").findAll { !it.empty })
+
+    modrinth {
+        projectId = "esvER4Ln"
+        accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+        mcVersions.forEach(minecraftVersions::add)
+    }
+
+    curseforge {
+        accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
+        projectId = "1090348"
+        mcVersions.forEach(minecraftVersions::add)
+
+        clientRequired = true
+        serverRequired = false
     }
 }
 
