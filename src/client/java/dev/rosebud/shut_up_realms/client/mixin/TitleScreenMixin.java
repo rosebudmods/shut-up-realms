@@ -16,7 +16,8 @@ public class TitleScreenMixin {
 	private boolean areRealmsNotificationsEnabled() {
 		return false;
 	}
-	
+
+	// note: required in order to properly initialize the realms screen and prevent null pointers
 	@Redirect(method = "init", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/TitleScreen;areRealmsNotificationsEnabled()Z"))
 	public boolean areRealmsNotificationsEnabled(TitleScreen instance) {
 		return true;
