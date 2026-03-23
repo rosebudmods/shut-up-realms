@@ -5,11 +5,11 @@
   "name": "shut up realms",
   "description": "removes the realms notification dot and news icon!",
   "authors": [
-    "ix0rai",
+    "eristhea",
     "orifu"
   ],
   "contact": {
-    "homepage": "https://modrinth.com/mod/shut-up-realms",
+    "homepage": "https://rosebud.dev/shut-up-realms",
     "sources": "https://github.com/rosebudmods/shut-up-realms",
     "issues": "https://github.com/rosebudmods/shut-up-realms/issues"
   },
@@ -24,15 +24,15 @@
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",
-    "minecraft": ">=1.21"
+    "minecraft": ">=26.1-"
   },
 
   "custom": {
     "modmenu": {
       "links": {
-        "modmenu.discord": "https://discord.gg/TN9gaXJ6E8",
+        "modmenu.discord": "https://discord.rosebud.dev",
         "modmenu.issues": "https://github.com/rosebudmods/shut-up-realms/issues",
-        "modmenu.website": "https://modrinth.com/mod/shut-up-realms"
+        "modmenu.website": "https://rosebud.dev/shut-up-realms"
       }
     }
   }
