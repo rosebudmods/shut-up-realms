@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(TitleScreen.class)
 public class TitleScreenMixin {
 	/**
-	 * @author ix0rai
+	 * @author eristhea
 	 * @reason shush!
 	 */
 	@Overwrite
