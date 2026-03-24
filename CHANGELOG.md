@@ -1,0 +1,3 @@
+- updated to 26.1 (thanks orifu!)
+- updated mod metadata to point to https://rosebud.dev
+- reduced JAR size by optimising icon
