@@ -3,19 +3,21 @@ name: release
 on: [workflow_dispatch]
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: checkout repository
+        uses: actions/checkout@v6
       - name: set up JDK 25
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '25'
       - name: grant execute permission for gradlew
         run: chmod +x gradlew
-      - run: ./gradlew publishMods
+      - name: publish
+        run: ./gradlew publishMods
         env:
           MODRINTH_TOKEN: ${{ secrets.ERISTHEA_MODRINTH_TOKEN }}
           CURSEFORGE_TOKEN: ${{ secrets.ERISTHEA_CURSEFORGE_TOKEN }}
