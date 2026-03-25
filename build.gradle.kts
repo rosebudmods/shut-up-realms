@@ -6,8 +6,9 @@ plugins {
 
 val minecraftVersion = property("minecraft_version").toString()
 val loaderVersion = property("loader_version").toString()
+val modVersion = property("mod_version").toString()
 
-version = property("mod_version").toString()
+version = "${modVersion}+${minecraftVersion}"
 group = property("maven_group").toString()
 
 base {
@@ -59,7 +60,7 @@ tasks.processResources {
 }
 
 publishMods {
-    displayName = "shut up realms $version"
+    displayName = "shut up realms $modVersion for $minecraftVersion"
     file = tasks.jar.get().archiveFile
     changelog = project.file("CHANGELOG.md").readText()
     type = STABLE
